@@ -4,9 +4,7 @@ import { NextResponse } from 'next/server';
 export async function GET(req: Request) {
   try {
     // getting id in query
-    const url = new URL(req.url!);
-    const id = url.searchParams.get('id');
-    
+    const id = req.url.split('=')[1]
     // checking if id exists
     if (!id) return NextResponse.json({ message: 'Missing id parameter' }, { status: 400 });
     // fetching data from db
