@@ -3,7 +3,7 @@ import { NextApiRequest } from 'next';
 import db from '../../../lib/prisma';
 import { NextResponse } from 'next/server';
 
-export async function GET(req: Request) {
+export async function GET(req: NextApiRequest) {
   try {
     // getting id in query
     const { searchParams } = new URL(req.url!);
