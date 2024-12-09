@@ -1,13 +1,11 @@
-
-import { NextApiRequest } from 'next';
 import db from '../../../lib/prisma';
 import { NextResponse } from 'next/server';
 
-export async function GET(req: NextApiRequest) {
+export async function GET(req: Request) {
   try {
     // getting id in query
-    const { searchParams } = new URL(req.url!);
-    const id = searchParams.get('id');
+    const url = new URL(req.url!);
+    const id = url.searchParams.get('id');
     
     // checking if id exists
     if (!id) return NextResponse.json({ message: 'Missing id parameter' }, { status: 400 });
